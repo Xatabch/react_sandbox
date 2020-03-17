@@ -1,20 +1,18 @@
 class MockApi {
     async authorize(user, password) {
-        console.log(`You auth with next credentials: ${user}, ${password}`)
+        console.log(`You auth with next credentials: ${user}, ${password}`);
         const mockData = {
             token: 'abcd'
         };
     
-        return mockData;
+        return new Promise((resolve) => setTimeout(resolve, 3000)).then(() => mockData);
     }
 
-    async storeItem(item) {
-        this.item = item;
+    storeItem(item) {
     }
 
-    async clearItem() {
-        this.item = '';
+    clearItem() {
     }
 }
 
-export default MockApi;
+export default new MockApi();

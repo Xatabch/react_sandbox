@@ -8,6 +8,10 @@ export default function reducer(state = initialState, action = {}) {
             return {
                 token: action.token
             };
+        case 'LOGOUT':
+            return {
+                token: ''
+            }
 
         default:
             return state;

@@ -19,7 +19,7 @@ export function* authorize(user, password) {
 export function* loginFlow() {
     while(true) {
         const {user, password} = yield take('LOGIN_REQUEST');
-        const task = yield fork(MockApi.authorize, user, password);
+        const task = yield fork(authorize, user, password);
         
         const action = yield take(['LOGOUT', 'LOGIN_ERROR']);
         if (action.type === 'LOGOUT') {

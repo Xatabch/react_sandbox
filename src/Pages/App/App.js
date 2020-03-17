@@ -10,7 +10,11 @@ class App extends Component {
     }
 
     onAuthClick() {
-        this.props.dispatch({type: 'LOGIN_REQUEST', user: 'Ivan', passsword: '123'});
+        this.props.dispatch({type: 'LOGIN_REQUEST', user: 'Ivan', password: '123'});
+    }
+
+    onLogoutClick() {
+        this.props.dispatch({type: 'LOGOUT'});
     }
 
     render() {
@@ -19,6 +23,7 @@ class App extends Component {
                 <div className="counter">{this.props.counter}</div>
                 <button onClick={this.onIncrementClick.bind(this)}>Increment</button>
                 <button onClick={this.onAuthClick.bind(this)}>Auth</button>
+                <button onClick={this.onLogoutClick.bind(this)}>Logout</button>
                 {this.props.isAuthSuccess ? <div className="authSuccess">Success Auth</div> : ""}
             </div>
         );
