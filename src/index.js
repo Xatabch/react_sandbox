@@ -9,10 +9,6 @@ import rootSaga from './Sagas/index';
 
 import App from './Pages/App/App';
 
-function reducer(state = 0, action = {}) {
-    console.log(state, action);
-}
-
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
     combineReducers(reducers),
