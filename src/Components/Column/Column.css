@@ -1,0 +1,10 @@
+.timeline_column {
+    min-width: 40px;
+    max-width: 40px;
+    height: 100%;
+    box-shadow: -2px 0 0 black inset;
+}
+
+.timeline_column_active {
+    box-shadow: 5px 5px 0 blue;
+}

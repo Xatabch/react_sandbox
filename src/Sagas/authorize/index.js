@@ -1,9 +1,13 @@
 import MockApi from '../../Services/mockAPI';
-import { put, cancelled, fork, take, cancel, call } from 'redux-saga/effects';
+import { put, cancelled, fork, take, cancel, call, all, race } from 'redux-saga/effects';
 
 export function* authorize(user, password) {
     try {
-        const token = yield call(MockApi.authorize, user, password);
+        // const token = yield call(MockApi.authorize, user, password);
+        const token = yield race([
+            call(MockApi.authorize, user, password, 3000),
+            call(MockApi.authorize, 'Maria', '123', 2000)
+        ]);
         yield put({type: 'LOGIN_SUCCESS', token});
         yield call(MockApi.storeItem, {token});
         return token;

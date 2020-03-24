@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import 'normalize.css';
 
+// Components
+import { Timeline } from '../../Components/Timeline/Timeline';
+import { Column } from '../../Components/Column/Column';
+
+// Selectors
 import * as counterSelectors from '../../Stores/countReducer/reducer';
 import * as authSelectors from '../../Stores/authReducer/reducer';
 
 class App extends Component {
-    onIncrementClick() {
-        this.props.dispatch({type: 'INCREMENT'});
-    }
-
-    onAuthClick() {
-        this.props.dispatch({type: 'LOGIN_REQUEST', user: 'Ivan', password: '123'});
-    }
-
-    onLogoutClick() {
-        this.props.dispatch({type: 'LOGOUT'});
-    }
-
     render() {
         return (
             <div className="app">
-                <div className="counter">{this.props.counter}</div>
-                <button onClick={this.onIncrementClick.bind(this)}>Increment</button>
-                <button onClick={this.onAuthClick.bind(this)}>Auth</button>
-                <button onClick={this.onLogoutClick.bind(this)}>Logout</button>
-                {this.props.isAuthSuccess ? <div className="authSuccess">Success Auth</div> : ""}
+                <Timeline />
             </div>
         );
     }

@@ -1,11 +1,18 @@
 class MockApi {
-    async authorize(user, password) {
-        console.log(`You auth with next credentials: ${user}, ${password}`);
-        const mockData = {
-            token: 'abcd'
+    async authorize(user, password, delay = 3000) {
+        console.log(`You authorize with next credentials: ${user}, ${password}`);
+
+        const db = {
+            'Ivan': {
+                token: 'abcd'
+            },
+            'Maria': {
+                token: 'ftp'
+            }
         };
-    
-        return new Promise((resolve) => setTimeout(resolve, 3000)).then(() => mockData);
+        
+        // Эмулирует задержку в 3 секунды
+        return new Promise((resolve) => setTimeout(resolve, delay)).then(() => db[user]);
     }
 
     storeItem(item) {
