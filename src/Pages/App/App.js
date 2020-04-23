@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import * as counterSelectors from '../../Stores/countReducer/reducer';
 import * as authSelectors from '../../Stores/authReducer/reducer';
 
+import Info from '../../Components/SvelteComponent/SvelteComponent.svelte';
+
 class App extends Component {
     onIncrementClick() {
         this.props.dispatch({type: 'INCREMENT'});
@@ -20,6 +22,7 @@ class App extends Component {
     render() {
         return (
             <div className="app">
+                <Info/>
                 <div className="counter">{this.props.counter}</div>
                 <button onClick={this.onIncrementClick.bind(this)}>Increment</button>
                 <button onClick={this.onAuthClick.bind(this)}>Auth</button>
