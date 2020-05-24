@@ -24,3 +24,14 @@ services:
         depends_on: 
             - front
             - back
+    prometheus:
+        image: prom/prometheus:latest
+        volumes:
+            - prometheus_data:/prometheus
+            - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+        ports:
+            - '9000:9000'
+        depends_on: 
+            - front
