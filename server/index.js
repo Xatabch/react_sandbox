@@ -3,9 +3,11 @@
 const app = require('fastify')({
     logger: false,
 });
+var morgan = require('morgan')
 var cors = require('cors');
 
 app.use(cors())
+app.use(morgan());
 
 app.get('/posts', (req, res) => {
     res.status(200).send(JSON.stringify({
