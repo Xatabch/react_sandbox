@@ -1,5 +1,7 @@
 const client = require('prom-client');
-const app = require('fastify');
+const app = require('fastify')({
+    logger: false,
+});
 var cors = require('cors');
 
 app.use(cors());
