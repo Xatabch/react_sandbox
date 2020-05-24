@@ -1,0 +1,5 @@
+@import '../../Style/globals.css';
+
+.postList {
+    padding: var(--size-x);
+}

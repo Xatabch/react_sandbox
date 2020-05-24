@@ -4,8 +4,9 @@
   "description": "React sandbox for my experiments",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production",
+    "serv": "node server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,11 +24,17 @@
     "@babel/core": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "babel-loader": "^8.0.6",
+    "cors": "^2.8.5",
+    "css-loader": "^3.5.3",
+    "fastify": "^2.14.1",
     "html-webpack-plugin": "^3.2.0",
+    "normalize.css": "^8.0.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "style-loader": "^1.2.1",
     "webpack": "^4.42.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   }
 }

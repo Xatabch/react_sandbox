@@ -1,0 +1,23 @@
+@import '../../Style/globals.css';
+
+.post {
+    cursor: pointer;
+    padding: var(--size-x);
+    border: 1px solid var(--secondary-color);
+    margin-bottom: var(--size-x);
+    width: var(--post-width);
+    border-radius: var(--base-border-radius);
+}
+
+.title {
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-xxl);
+    color: var(--secondary-color);
+}
+
+.subtitle {
+    font-family: var(--main-font-family);
+    font-size: var(--font-size-x);
+    color: var(--secondary-color);
+    margin-top: var(--size-sm);
+}
