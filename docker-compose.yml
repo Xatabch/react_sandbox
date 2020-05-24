@@ -24,6 +24,8 @@ services:
         depends_on: 
             - front
             - back
+            - metrics
+            - prometheus
     metrics:
         container_name: metrics
         ports: 
