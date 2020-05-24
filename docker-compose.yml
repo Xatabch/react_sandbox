@@ -24,7 +24,17 @@ services:
         depends_on: 
             - front
             - back
+    metrics:
+        container_name: metrics
+        ports: 
+            - 9001:9001
+        build: 
+            context: .
+            dockerfile: metrics.Dockerfile
+        depends_on: 
+            - front
     prometheus:
+        container_name: prometheus
         image: prom/prometheus:latest
         volumes:
             - prometheus_data:/prometheus
@@ -32,9 +42,9 @@ services:
         command:
             - '--config.file=/etc/prometheus/prometheus.yml'
         ports:
-            - '9000:9000'
+            - 9000:9000
         depends_on: 
-            - front
+            - metrics
 
 volumes:
     prometheus_data: {}
