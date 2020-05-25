@@ -1,6 +1,7 @@
 const client = require('prom-client');
 const app = require('express')();
 var cors = require('cors');
+const gaussian = require('gaussian');
 
 app.use(cors());
 
