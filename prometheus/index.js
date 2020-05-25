@@ -22,7 +22,7 @@ app.get('/metrics', (req, res, next) => {
 });
 
 app.post('/access', (req, res) => {
-    counter.inc(); // Inc with 1
+    // counter.inc();
     res.status(200).send({})
 });
 
