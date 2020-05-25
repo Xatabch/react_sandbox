@@ -1,18 +1,15 @@
 const client = require('prom-client');
-const app = require('express')();
+const express = require('express');
+const app = express(0);
 var cors = require('cors');
 
 app.use(cors());
+app.use(express.bodyParser());
 
-// Инит метрик
-const registry = new client.Registry();
-const gauge = new client.Gauge({
-    name: 'active_users',
-    help: 'Amount of active users right now per category',
-    registers: [registry],
-    labelNames: [
-      'category',
-    ],
+new client.Histogram({
+  name: 'TestHistogram',
+  help: 'HistogramHelp',
+  buckets: [0.1, 5, 15, 50, 100, 500],
 });
 
 app.get('/metrics', (req, res, next) => {
@@ -23,8 +20,8 @@ app.get('/metrics', (req, res, next) => {
 });
 
 app.post('/fcp', (req, res) => {
-    gauge.set({ category: 'fcp' }, 10);
-    res.status(201).send({"fcp": 10})
+    const fcp = req.body.fcp;
+    res.status(200).send({})
 });
 
 const port = process.env.PORT || 9200;
