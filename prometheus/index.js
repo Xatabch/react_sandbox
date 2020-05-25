@@ -7,10 +7,9 @@ const bodyParser = require('body-parser');
 app.use(cors());
 app.use(bodyParser);
 
-new client.Histogram({
-  name: 'TestHistogram',
-  help: 'HistogramHelp',
-  buckets: [0.1, 5, 15, 50, 100, 500],
+const counter = new client.Counter({
+  name: 'user_come',
+  help: 'user_come_help',
 });
 
 app.get('/metrics', (req, res, next) => {
@@ -20,8 +19,8 @@ app.get('/metrics', (req, res, next) => {
     next();
 });
 
-app.post('/fcp', (req, res) => {
-    const fcp = req.body.fcp;
+app.post('/access', (req, res) => {
+    counter.inc(); // Inc with 1
     res.status(200).send({})
 });
 
