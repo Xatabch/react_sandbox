@@ -30,13 +30,13 @@ services:
     prometheus:
         container_name: prometheus
         image: prom/prometheus:latest
-            volumes:
-                - prometheus_data:/prometheus
-                - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-            command:
-                - '--config.file=/etc/prometheus/prometheus.yml'
-            ports:
-                - '9090:9090'
+        volumes:
+            - prometheus_data:/prometheus
+            - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+        command:
+            - '--config.file=/etc/prometheus/prometheus.yml'
+        ports:
+            - '9090:9090'
     grafana:
         container_name: grafana
         image: grafana/grafana:latest
@@ -52,16 +52,16 @@ services:
         ports:
             - '3000:3000'
     metrics:
+        container_name: metrics
         build:
-            context: ./prometheus
+            context: .
             dockerfile: metrics.Dockerfile
         ports:
             - '9200:9200'
         command: 'index.js'
         depends_on:
             - front
-            
-            
+                       
 volumes:
     prometheus_data: {}
     grafana_data: {}
