@@ -1,15 +1,20 @@
 const client = require('prom-client');
 const express = require('express');
 const app = express();
-var cors = require('cors');
+const bodyParser = require('body-parser')
+const cors = require('cors');
 
 app.use(cors());
+app.use(bodyParser.json())
 
 const registry = new client.Registry();
-const counter = new client.Counter({
-  name: 'user_come',
-  help: 'user_come_help',
-  registers: [registry]
+const gauge = new client.Gauge({
+  name: 'fcp',
+  help: 'Fcp metic',
+  registers: [registry],
+  labelNames: [
+    'metrics',
+  ],
 });
 
 app.get('/metrics', (req, res, next) => {
@@ -19,8 +24,9 @@ app.get('/metrics', (req, res, next) => {
     next();
 });
 
-app.post('/access', (req, res) => {
-    counter.inc();
+app.post('/fcp', (req, res) => {
+    const fcp = req.body.fcp;
+    gauge.set({ metrics: 'fcp' }, fcp);
     res.status(200).send({})
 });
 
