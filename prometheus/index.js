@@ -53,7 +53,7 @@ app.post('/fcp', (req, res) => {
     res.status(201).send({"fcp": 10})
 });
 
-const port = process.env.PORT || 9001;
+const port = process.env.PORT || 9200;
 
 app.listen(port, '0.0.0.0', (err, address) => {
 	console.log(`Server listening on port ${port}`);
