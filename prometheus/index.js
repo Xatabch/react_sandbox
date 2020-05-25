@@ -23,9 +23,8 @@ app.get('/metrics', (req, res, next) => {
 });
 
 app.post('/fcp', (req, res) => {
-    const fcp = req.body.fcp;
-
-    gauge.set({ category: 'fcp' }, fcp);
+    gauge.set({ category: 'fcp' }, 10);
+    res.status(201).send({"fcp": 10})
 });
 
 const port = process.env.PORT || 9001;
