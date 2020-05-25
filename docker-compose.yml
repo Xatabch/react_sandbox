@@ -3,7 +3,7 @@ services:
     front:
         container_name: front
         ports:
-            - 8000:80
+            - 80:80
         build: 
             context: .
             dockerfile: front.Dockerfile
@@ -26,6 +26,7 @@ services:
             - back
             - metrics
             - prometheus
+            - grafana
     metrics:
         container_name: metrics
         ports: 
