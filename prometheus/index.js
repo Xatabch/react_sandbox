@@ -1,10 +1,11 @@
 const client = require('prom-client');
 const express = require('express');
-const app = express(0);
+const app = express();
 var cors = require('cors');
+const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(express.bodyParser());
+app.use(bodyParser);
 
 new client.Histogram({
   name: 'TestHistogram',
