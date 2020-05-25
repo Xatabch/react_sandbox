@@ -58,7 +58,6 @@ services:
             dockerfile: metrics.Dockerfile
         ports:
             - '9200:9200'
-        command: 'index.js'
         depends_on:
             - front
                        
