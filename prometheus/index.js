@@ -2,10 +2,8 @@ const client = require('prom-client');
 const express = require('express');
 const app = express();
 var cors = require('cors');
-const bodyParser = require('body-parser');
 
 app.use(cors());
-app.use(bodyParser);
 
 const registry = new client.Registry();
 const counter = new client.Counter({
@@ -22,7 +20,7 @@ app.get('/metrics', (req, res, next) => {
 });
 
 app.post('/access', (req, res) => {
-    // counter.inc();
+    counter.inc();
     res.status(200).send({})
 });
 
