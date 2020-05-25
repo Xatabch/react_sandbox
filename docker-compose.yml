@@ -47,6 +47,20 @@ services:
             - 9000:9000
         depends_on: 
             - metrics
+    grafana:
+        image: grafana/grafana:latest
+        volumes:
+            - grafana_data:/var/lib/grafana
+            - ./grafana/provisioning:/etc/grafana/provisioning
+            - ./grafana/config.ini:/etc/grafana/config.ini
+            - ./grafana/dashboards:/var/lib/grafana/dashboards
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=illchangeitanyway
+        depends_on:
+            - prometheus
+        ports:
+            - 3000:3000
 
 volumes:
     prometheus_data: {}
+    grafana_data: {}
