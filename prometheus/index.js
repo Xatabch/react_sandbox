@@ -7,9 +7,11 @@ const bodyParser = require('body-parser');
 app.use(cors());
 app.use(bodyParser);
 
+const registry = new client.Registry();
 const counter = new client.Counter({
   name: 'user_come',
   help: 'user_come_help',
+  registers: [registry]
 });
 
 app.get('/metrics', (req, res, next) => {
