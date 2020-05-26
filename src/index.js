@@ -12,8 +12,11 @@ function sendFCP(obj) {
     fetch('http://metrics.neiron.email/fcp', {
         method: 'POST',
         mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
-            "fcp": obj.value
+            'fcp': obj.value
         })
     })
 }
