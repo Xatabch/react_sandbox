@@ -26,6 +26,7 @@ app.get('/metrics', (req, res, next) => {
 
 app.post('/fcp', (req, res) => {
     const fcp = req.body.fcp;
+    console.log(req.body);
     gauge.set({ metrics: 'fcp' }, fcp);
     res.status(200).send({})
 });
