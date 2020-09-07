@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
     mode: 'development',
     entry: { 
-        index: './src/index.js' 
+        index: './src/index.tsx' 
     },
     output: {
         path: path.join(__dirname, '/build'),
@@ -12,13 +12,30 @@ module.exports = {
     },
     module: {
         rules: [
+            // {
+            //     test: /\.js$/,
+            //     exclude: /node_modules/,
+            //     use: ['babel-loader'],
+            // },
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: ['babel-loader'],
-            }
+				test: /\.tsx?$/,
+				use: [
+					{
+						loader: 'babel-loader',
+					},
+					{
+						loader: 'ts-loader',
+						options: {
+							allowTsInNodeModules: true,
+						},
+					},
+				],
+			},
         ]
     },
+    resolve: {
+		extensions: ['.tsx', '.ts', '.js']
+	},
     devServer: {
 		contentBase: path.join(__dirname, 'build'),
 		compress: true,
