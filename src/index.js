@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './Pages/App/App';
+import App from './App';
 
 console.log('start app');
 
