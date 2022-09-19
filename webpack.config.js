@@ -1,10 +1,11 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: { 
-        index: './src/index.tsx' 
+    entry: {
+        index: './src/index.tsx'
     },
     output: {
         path: path.join(__dirname, '/build'),
@@ -12,7 +13,7 @@ module.exports = {
     },
     module: {
         rules: [
-            { 
+            {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 exclude: /node_modules/,
@@ -28,6 +29,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: './public/index.html'
+        }),
+        new ESLintPlugin({
+            overrideConfigFile: path.resolve(__dirname, '../.eslintrc'),
+            context: path.resolve(__dirname, '../src'),
+            files: '**/*.(tsx|ts)'
         })
     ]
 }
